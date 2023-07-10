@@ -6,15 +6,15 @@ import './less/index.less'
  *  Create listeners of 10 types of events
  * * such as: 
  *  [x] `mouseover` [x] `mouseout` [x]`click` [x]`copy`
-  * [x] `keydown`
+  * [x] `keydown` [x]`keyup`
   * [ ] `wheel`
   * [ ] `load`
   * [ ] `focus`
   * [ ] `resize`
-  * [ ] `scroll`
+  * [x] `scroll`
   * [ ] `select`
   * [x] `dblclick`
-  * [ ] `drag / drop`
+  * [x] `drag / drop`
   * 
   * Use preventDefault
 
@@ -78,12 +78,32 @@ document.addEventListener("copy", event => {
 
 
  document.addEventListener("keydown", event => {
-    console.log(event)
     if(event.keyCode === 70) {
         document.body.style.backgroundColor = 'hotPink'
     }
  })
+
+document.addEventListener("keyup", event => {
+    if(event.keyCode === 74){
+        document.body.style.backgroundColor = 'yellow'
+    }
+})
+
  const imageMap = document.querySelector('.content-section .img-content img');
  const imageVenice = document.querySelector('.inverse-content .img-content img');
 
+ imageVenice.addEventListener("drag", event => {
+    imageVenice.style.filter = "invert(100%)"
+ })
+
+
  
+ document.addEventListener("wheel", event => {
+    document.body.style.color = 'teal'; 
+    document.body.style.textShadow = "5px 5px 1px #ff0000";
+ })
+
+ document.addEventListener("scroll", event => {
+    document.body.style.color = ""; 
+    document.body.style.textShadow = "";
+})
